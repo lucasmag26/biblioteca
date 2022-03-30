@@ -1,0 +1,40 @@
+<?php
+
+//CONEXAO COM ORACLE
+class PDOConnection {
+
+    public $dbh;
+
+    public function __construct() {
+
+        $this->dbh = null;
+
+        try {
+
+            $server         = "";
+            $db_username    = "";
+            $db_password    = "";
+            $service_name   = "";
+            $sid            = "";
+            $port           = ;
+            $dbtns          = "(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = $server)(PORT = $port)) (CONNECT_DATA = (SERVICE_NAME = $service_name) (SID = $sid)))";
+
+            $this->dbh = new PDO("oci:dbname=" . $dbtns . ";charset=utf8", $db_username, $db_password, array(
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC));
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        return $this->dbh;
+    }
+
+    public function __destruct() {
+        $this->dbh = NULL;
+    }
+
+}
+
+?>
