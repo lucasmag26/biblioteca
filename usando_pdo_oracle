@@ -1,0 +1,52 @@
+<?php
+include_once 'database_oracle.php';
+
+    
+//CONECTANDO COM O BANCO DE DADOS
+$database_oracle = new PDOConnection();
+$db = $database_oracle->__construct();
+
+$table_name = "UF";
+
+
+//PRINTANDO TODOS OS NOMES DE ESTADO CADASTRADOS NA BASE DE DADOS UF
+$select_sql = "SELECT * FROM ". 
+        $table_name . " ";
+
+        $sql_stmt = $db->prepare($select_sql);
+        $sql_stmt->execute();
+        $result = $sql_stmt->fetchALL(PDO::FETCH_ASSOC);
+    
+        foreach($result as $item)
+        {
+           echo $item["NM_UF"]. '<br>';
+        }
+
+?>
+
+//FETCH -> USADO QUANDO O RETORNO É DE UMA LINHA SÓ
+
+<?php
+include_once 'database_oracle.php';
+
+    
+//CONECTANDO COM O BANCO DE DADOS
+$database_oracle = new PDOConnection();
+$db = $database_oracle->__construct();
+
+$table_name = "UF";
+
+$select_sql = "SELECT * FROM ". 
+        $table_name . " WHERE CD_UF_IBGE = 26";
+
+        $sql_stmt = $db->prepare($select_sql);
+        $sql_stmt->execute();
+        $result = $sql_stmt->fetch(PDO::FETCH_ASSOC);
+
+       echo $result['NM_UF'];
+
+?>
+
+
+
+
