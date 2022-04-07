@@ -1,0 +1,44 @@
+<!--JAVASCRIPT--> 
+<script> 
+//Verifica se as senhas são iguais
+		let senha = document.getElementById('senha');
+		let senhaC = document.getElementById('senha_conf');
+
+		function validarSenha() {
+		if (senha.value != senhaC.value) {
+			senhaC.setCustomValidity("Senhas diferentes!");
+			senhaC.reportValidity();
+			return false;
+		} else {
+			senhaC.setCustomValidity("");
+			return true;
+		}
+		}
+
+// Verificar quando o campo for modificado, para que a mensagem suma quando as senhas forem iguais
+senhaC.addEventListener('input', validarSenha);
+
+
+//Verifica se o candango é maior de idade
+let dataC = document.getElementById('data');
+let dataAtual =  new Date().getFullYear();
+
+function validarIdade() {
+
+	var dataNasc = dataC.value
+	var ano = dataNasc.split("/")
+
+	var idadeFim = (dataAtual - ano[2]);
+	if (idadeFim < 18) {
+		dataC.setCustomValidity("Menor de Idade");
+		dataC.reportValidity();
+		$('#Button').prop('disabled', true);
+		return false;
+	}else {
+		dataC.setCustomValidity("");
+		$('#Button').prop('disabled', false);
+		return true;
+	}
+
+}
+dataC.addEventListener('input', validarIdade);
