@@ -27,3 +27,13 @@ function CPF(){"user_strict";function r(r){for(var t=null,n=0;9>n;++n)t+=r.toStr
 	});
     
     
+    //Somente numeros
+    <input type="text" onkeyup="somenteNumeros(this);" class="form-control form-control-lg" id='login' name='login' placeholder="Seu CPF (Somente números)" required>	
+    function somenteNumeros(num) {
+        var er = /[^0-9]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
