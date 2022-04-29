@@ -1,0 +1,17 @@
+<input style="" class="css-input" id="myInput" type="text" placeholder="Buscar"> 
+ 
+ /// FILTRO TABELA                          
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tabela tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+}),
+
+
+
